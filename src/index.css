@@ -1,0 +1,15 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .neu-flat {
+    background: #FFFBF0;
+    box-shadow: 8px 8px 16px #e6e2d8, -8px -8px 16px #ffffff;
+  }
+  .neu-pressed {
+    background: #FFFBF0;
+    box-shadow: inset 6px 6px 12px #e6e2d8, inset -6px -6px 12px #ffffff;
+  }
+}
