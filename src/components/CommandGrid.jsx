@@ -1,10 +1,10 @@
 import React from 'react';
-import { Chrome, Code, FileText, Music, Calculator, Lock, Power, RefreshCw, Play, Edit, Trash2 } from 'lucide-react';
+import { Globe, Code, FileText, Music, Calculator, Lock, Power, RefreshCw, Play, Edit, Trash2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const CommandGrid = ({ onExecute }) => {
   const tasks = [
-    { id: 'open_chrome', icon: Chrome, label: 'Chrome', color: 'text-blue-500' },
+    { id: 'open_chrome', icon: Globe, label: 'Chrome', color: 'text-blue-500' },
     { id: 'open_vscode', icon: Code, label: 'VS Code', color: 'text-blue-400' },
     { id: 'open_notepad', icon: FileText, label: 'Notepad', color: 'text-gray-400' },
     { id: 'open_spotify', icon: Music, label: 'Spotify', color: 'text-green-500' },
