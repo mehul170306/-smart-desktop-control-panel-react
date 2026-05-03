@@ -1,15 +1,35 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .neu-flat {
-    background: #FFFBF0;
-    box-shadow: 8px 8px 16px #e6e2d8, -8px -8px 16px #ffffff;
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
-  .neu-pressed {
-    background: #FFFBF0;
-    box-shadow: inset 6px 6px 12px #e6e2d8, inset -6px -6px 12px #ffffff;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card backdrop-blur-md border border-white/10 rounded-2xl shadow-xl;
   }
+  
+  .neon-text-blue {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-xl font-medium transition-all hover:scale-105 active:scale-95 shadow-neon-blue;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
 }
