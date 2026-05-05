@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: '/smart-desktop-control-panel-react/',
-})
+  base: mode === 'production' && !process.env.VERCEL ? '/-smart-desktop-control-panel-react/' : '/',
+}))

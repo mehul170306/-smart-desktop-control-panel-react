@@ -7,7 +7,7 @@ import MetricsDashboard from './components/MetricsDashboard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, ShieldCheck, Settings } from 'lucide-react';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -59,9 +59,9 @@ function App() {
     setLogs(prev => [log, ...prev].slice(0, 50));
   };
 
-  const handleExecuteTask = (taskId) => {
+  const handleExecuteTask = (taskId, value) => {
     if (socket) {
-      socket.emit('execute_task', { taskId });
+      socket.emit('execute_task', { taskId, value });
     }
   };
 

@@ -36,12 +36,25 @@ const commands = {
 };
 
 module.exports = {
-  executeTask: async (taskId, params) => {
-    if (commands[taskId]) {
-      console.log(`Executing task: ${taskId}`);
-      return await commands[taskId](params);
-    } else {
-      throw new Error(`Task ${taskId} not found`);
+  executeTask: async (taskId, value) => {
+    // If the value looks like a URL, open it
+    if (value && (value.startsWith('http://') || value.startsWith('https://'))) {
+      console.log(`Opening URL: ${value}`);
+      return await runCommand(`start ${value}`);
     }
+
+    // If it's a specific known command with custom logic
+    if (commands[taskId]) {
+      console.log(`Executing pre-defined task: ${taskId}`);
+      return await commands[taskId](value);
+    } 
+    
+    // Otherwise, try to run the value directly as a shell command
+    if (value) {
+      console.log(`Executing custom shell command: ${value}`);
+      return await runCommand(value);
+    }
+
+    throw new Error(`Task ${taskId} with value ${value} could not be executed`);
   }
 };

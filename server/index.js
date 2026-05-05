@@ -81,8 +81,8 @@ io.on('connection', (socket) => {
   // Handle Command Execution
   socket.on('execute_task', async (data) => {
     try {
-      const { taskId, params } = data;
-      await pcCommands.executeTask(taskId, params);
+      const { taskId, value } = data; // Receive both ID and custom value
+      await pcCommands.executeTask(taskId, value);
       socket.emit('task_status', { taskId, status: 'success' });
     } catch (error) {
       socket.emit('task_status', { taskId, status: 'error', message: error.message });
